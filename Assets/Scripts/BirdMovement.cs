@@ -22,10 +22,15 @@ public class BirdMovement : MonoBehaviour
         {
             Jump();
         }
-
-        
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (gameObject != null)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Jump()
     {

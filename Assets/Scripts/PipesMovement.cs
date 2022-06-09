@@ -6,7 +6,7 @@ public class PipesMovement : MonoBehaviour
 {
 
     [SerializeField] int vitessePipe;
-    [SerializeField] int distanceHorsChampsPipe;
+    [SerializeField] int distanceHorsChampPipe;
     Rigidbody2D rbPipe;
     
     void Start()
@@ -21,7 +21,7 @@ public class PipesMovement : MonoBehaviour
         {
             rbPipe.velocity = new Vector2(-vitessePipe, rbPipe.velocity.y);
 
-            if (rbPipe.position.x < -distanceHorsChampsPipe)
+            if (rbPipe.position.x < -distanceHorsChampPipe)
             {
                 destroyPipe();
             }
