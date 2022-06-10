@@ -7,21 +7,22 @@ public class PipesMovement : MonoBehaviour
 
     [SerializeField] int vitessePipe;
     [SerializeField] int distanceHorsChampPipe;
+    
     Rigidbody2D rbPipe;
     
     void Start()
     {
-        rbPipe = GetComponent<Rigidbody2D>();
+        rbPipe = GetComponent<Rigidbody2D>();   
     }
 
     
     void Update()
     {
-        if (rbPipe != null)
+        if (rbPipe != null) //si pipe existe
         {
-            rbPipe.velocity = new Vector2(-vitessePipe, rbPipe.velocity.y);
+            rbPipe.velocity = new Vector2(-vitessePipe, rbPipe.velocity.y); //pipe bouge vers la gauche
 
-            if (rbPipe.position.x < -distanceHorsChampPipe)
+            if (rbPipe.position.x < -distanceHorsChampPipe) //si pipe en dehors de l'écran
             {
                 destroyPipe();
             }
@@ -31,6 +32,8 @@ public class PipesMovement : MonoBehaviour
 
     void destroyPipe()
     {
-        Destroy(gameObject);
+        Destroy(gameObject); //détruire Pipe
+        FindObjectOfType<PipesInstantiate>().InstantiatePipe();
     }
+
 }
