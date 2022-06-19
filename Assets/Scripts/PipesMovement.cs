@@ -15,8 +15,8 @@ public class PipesMovement : MonoBehaviour
         rbPipe = GetComponent<Rigidbody2D>();   
     }
 
-    
-    void Update()
+
+    private void FixedUpdate()
     {
         if (rbPipe != null) //si pipe existe
         {
@@ -27,13 +27,11 @@ public class PipesMovement : MonoBehaviour
                 destroyPipe();
             }
         }
-       
     }
 
     void destroyPipe()
     {
         Destroy(gameObject); //détruire Pipe
-        FindObjectOfType<PipesInstantiate>().InstantiatePipe();
     }
 
 }
