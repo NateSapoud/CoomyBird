@@ -8,6 +8,7 @@ public class PipesInstantiate : MonoBehaviour
     [SerializeField] GameObject Pipe;
     [SerializeField] int RangeYPipe;
     [SerializeField] Transform RayCast;
+    [SerializeField] int DistanceBetweenPipes;
     
     void Start()
     {
@@ -28,7 +29,7 @@ public class PipesInstantiate : MonoBehaviour
         if (hit.collider != null) //if it its something
         {
             float distance = Mathf.Abs(hit.distance); //distance of the hit object
-            if (distance >= 5) //if the distance is more than 5 we instantiate another pipe
+            if (distance >= DistanceBetweenPipes) //if the distance is more than 5 we instantiate another pipe
             {
                 InstantiatePipe();
             }
