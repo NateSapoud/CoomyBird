@@ -26,9 +26,10 @@ public class BirdMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       // if (gameObject != null && collision.gameObject.tag == "Pipe")
-             Destroy(gameObject);
-        
+        if (gameObject != null && collision.gameObject.tag == "Pipe")
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Jump()
