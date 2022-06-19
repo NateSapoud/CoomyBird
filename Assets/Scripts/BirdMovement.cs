@@ -8,6 +8,7 @@ public class BirdMovement : MonoBehaviour
     Rigidbody2D rbBird;
     [SerializeField] int jumpHeight;
     [SerializeField] Camera Camera;
+    [SerializeField] GameObject DeathSound;
     public Shaker myshaker;
     public ShakePreset ShakePreset;
 
@@ -51,5 +52,7 @@ public class BirdMovement : MonoBehaviour
     {
         Destroy(gameObject);
         myshaker.Shake(ShakePreset);
+        Instantiate(DeathSound, new Vector2(0, 0), Quaternion.identity);
+        
     }
 }
