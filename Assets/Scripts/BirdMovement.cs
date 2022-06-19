@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using MilkShake;
 
 public class BirdMovement : MonoBehaviour
@@ -9,8 +11,11 @@ public class BirdMovement : MonoBehaviour
     [SerializeField] int jumpHeight;
     [SerializeField] Camera Camera;
     [SerializeField] GameObject DeathSound;
-    public Shaker myshaker;
-    public ShakePreset ShakePreset;
+    [SerializeField] TextMeshProUGUI text;
+    [SerializeField] Shaker myshaker;
+    [SerializeField] ShakePreset ShakePreset;
+    int points = 0;
+    bool risingEdge = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +31,27 @@ public class BirdMovement : MonoBehaviour
         {
             Jump();
         }
+
+        text.text = "Points: " + points.ToString();
+
+    }
+
+    private void FixedUpdate()
+    {
+
+        RaycastHit2D hit = Physics2D.Raycast(rbBird.position, Vector2.up);
+        float distance = Mathf.Abs(hit.distance);
+
+        if (hit.collider != null && distance <= 3/*&& !risingEdge*/)
+        {
+            points++;
+            risingEdge = true;
+        }
+
+       /* if (hit.collider == null)
+        {
+            risingEdge = false;
+        }*/
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
